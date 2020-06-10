@@ -220,6 +220,8 @@ def split_doc(input_path, dest_folder, section_str, begin_page_str, end_page_str
 
         os.system(f'{gs_path} {gs_args} {pdf}')
 
+        os.remove(pdf)
+
         return True
 
     else:
