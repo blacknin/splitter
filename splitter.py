@@ -220,7 +220,7 @@ def split_doc(input_path, dest_folder, section_str, begin_page_str, end_page_str
         pdf_a_def_path = 'C:/splitter/dependencies/PDFA_def.ps'
         gs_args = f'-dPDFA -dNOOUTERSAVE -sProcessColorModel=DeviceRGB -dUseCIEColor -sDEVICE=pdfwrite -o {pdf_a} -dPDFACompatibilityPolicy=1 {pdf_a_def_path}'
         
-        subprocess.run(f'{gs_path} {gs_args} {pdf}', stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
+        subprocess.call(f'{gs_path} {gs_args} {pdf}', stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT, creationflags=0x08000000)
 
         os.remove(pdf)
 
