@@ -79,6 +79,7 @@ def load_preview(path_pdf, page_number, label_preview, line_e_current_page, line
     pix = page.getPixmap(alpha = False)
     fmt = QtGui.QImage.Format_RGBA8888 if pix.alpha else QtGui.QImage.Format_RGB888
     qt_img = QtGui.QImage(pix.samples, pix.width, pix.height, pix.stride, fmt)
+    qt_img = qt_img.scaled(360,450,QtCore.Qt.KeepAspectRatio)
 
     label_preview.setPixmap(QtGui.QPixmap.fromImage(qt_img))
     line_e_current_page.setText(str(page_number + 1))
